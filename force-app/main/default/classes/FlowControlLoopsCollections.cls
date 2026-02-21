@@ -94,12 +94,12 @@ public with sharing class FlowControlLoopsCollections {
      * @return A string indicating whether the number is "Positive", "Negative", or "Zero", or null if the number is null.
      */
     public static String checkNumber(Integer a) {
-        if (a > 0) {
-            return 'Positive';
+        if (a == null ) {
+            return null;
         } else if (a < 0){ 
             return 'Negative';
-        } else if (a == null){
-            return null;
+        } else if (a > 0){
+            return 'Positive';
         } else {
             return 'Zero';
         }
@@ -219,17 +219,9 @@ public with sharing class FlowControlLoopsCollections {
      * the condition of the loop to run when the value is less than three. Just thought I'd showcase that it crossed my mind. I wouldn't add it in future work.
      */
     public static String returnHelloWorld() {
-        String result;
-        String helloWorldText = 'Hello World!; ';
-
+        String result = '';
         for (integer i = 0; i < 3; i++) {
-        if (result == null) {
-            result = 'Hello World!; ';
-        } 
-        /*else if (i == 3) {
-            break;
-        }*/
-        else ( result += 'Hello World!; ');
+        (result += 'Hello World!; ');
         }
 
         return result; 
@@ -397,8 +389,7 @@ public with sharing class FlowControlLoopsCollections {
             currentWord = words.get(i);
             if (currentWord.contains(wordToFind)) {
                 positionIndex = i;
-            } else {
-                continue;
+                break;
             }
         }
         return positionIndex;
@@ -486,19 +477,14 @@ public with sharing class FlowControlLoopsCollections {
         employeeSalaries.put ('Alice Johnson', 65000);
 
         List<String> srzMoneyMakers = new List<String>(); //list to collect names that meet criteria;
-        List<String> employeeNames = new List<String>(employeeSalaries.keySet()); //set the values of employees from the map into a string list 
-        List<Integer> employeeSalary = new List<Integer>(employeeSalaries.values()); // set the values of the salaries into an integer list
 
-        for (Integer i = 0; i < employeeNames.size(); i++) {
-        String currentEmployee = employeeNames [i]; //introducing string var to store current var's element value;
-        Integer currentSalary = employeeSalary [i]; // as above;
-        {
-            if (currentSalary > 55000) {
-                srzMoneyMakers.add(currentEmployee);
-            }
+        for (string employeeName : employeeSalaries.keySet()) {
+        if (employeeSalaries.get(employeeName) > 55000) { //this gets the current index of the set ('John Doe', 50000) and then compares the value in it against the expression.
+            srzMoneyMakers.add(employeeName);
         }
     }
     return srzMoneyMakers;
+
 }
 
 }
